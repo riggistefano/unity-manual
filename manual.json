@@ -1,0 +1,960 @@
+{
+ "title": "Unity App Authoring",
+ "subtitle": "Build an interactive AR training scene, step by step.",
+ "version": "v7 · interactive",
+ "parts": [
+  {
+   "id": "p1",
+   "title": "Unity basics",
+   "subtitle": "Optional read-only introduction",
+   "steps": [
+    {
+     "id": "c33a69d",
+     "type": "choice",
+     "title": "Quick Unity refresher?",
+     "question": "Do you already know the main parts of the Unity Editor?",
+     "options": [
+      {
+       "id": "o49f7e3",
+       "label": "No, skip it",
+       "desc": "I already know Unity. Go straight to the setup.",
+       "steps": []
+      },
+      {
+       "id": "o4a7dac",
+       "label": "Yes, show me",
+       "desc": "4 short read-only cards. No actions required.",
+       "steps": [
+        {
+         "id": "sd4a982",
+         "type": "step",
+         "title": "Project folders",
+         "subtitle": "Nothing to do yet. This explains the names used in the next steps.",
+         "info": true,
+         "bullets": [
+          "`Assets` is the folder holding all project resources.",
+          "`CAD` contains the 3D models of the machines (`.fbx`).",
+          "`Images and Videos` contains the media for the pop-ups.",
+          "`Scenes` contains the finished demo scene and the `SampleScene`."
+         ],
+         "image": "img/p3_1.jpg",
+         "tip": "",
+         "warn": ""
+        },
+        {
+         "id": "s61fcf6",
+         "type": "step",
+         "title": "Hierarchy",
+         "subtitle": "Nothing to do yet. This explains the names used in the next steps.",
+         "info": true,
+         "bullets": [
+          "Panel that lists every object in the scene.",
+          "Select an object here to open its Inspector."
+         ],
+         "image": "img/p3_2.jpg",
+         "tip": "",
+         "warn": ""
+        },
+        {
+         "id": "s17457c",
+         "type": "step",
+         "title": "Inspector",
+         "subtitle": "Nothing to do yet. This explains the names used in the next steps.",
+         "info": true,
+         "bullets": [
+          "Shows the properties (components) of the selected object.",
+          "You can add or edit components here."
+         ],
+         "image": "img/p4_1.jpg",
+         "tip": "A component is a property of an object. Custom ones come from scripts; existing ones are added with `Add Component`.",
+         "warn": ""
+        },
+        {
+         "id": "s1242e1",
+         "type": "step",
+         "title": "Canvas and panels",
+         "subtitle": "Nothing to do yet. This explains the names used in the next steps.",
+         "info": true,
+         "bullets": [
+          "A Canvas holds the user interface of the scene.",
+          "Panels are children of the Canvas."
+         ],
+         "image": "img/p4_2.jpg",
+         "tip": "",
+         "warn": "Note: The image shown is for illustrative purposes only. Each Canvas and Panel in the scene will have its own unique name. Therefore, not all Canvases will be named \"OperationSelectionSV\", nor will all Panels be named \"Panel\"."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "title": "Scene & assets",
+   "subtitle": "Prepare the project before building",
+   "steps": [
+    {
+     "id": "s3d486a",
+     "type": "step",
+     "title": "Set the render mode",
+     "subtitle": "",
+     "info": false,
+     "bullets": [
+      "On top of the screen, go to `Edit -> Project Settings -> XR Plug-in Management -> OpenXR`.",
+      "Set **Render Mode** to `Multi-Pass`.",
+      "Do it in both the **Windows** and **Android** tabs."
+     ],
+     "image": "img/p5_2.jpg",
+     "tip": "",
+     "warn": "Check it every time you open the Unity project."
+    },
+    {
+     "id": "s748262",
+     "type": "step",
+     "title": "Duplicate the SampleScene",
+     "subtitle": "",
+     "info": false,
+     "bullets": [
+      "In the Project window open `Assets -> Scenes`.",
+      "Select `SampleScene` and press `Ctrl+D`.",
+      "Rename the copy and double-click to open it."
+     ],
+     "image": "img/p4_3.jpg",
+     "tip": "The scene already contains the required settings and some basic pop-ups. You only add the CAD model and the instructions.",
+     "warn": "The scene is configured for a Meta headset."
+    },
+    {
+     "id": "s66ee24",
+     "type": "step",
+     "title": "Import the instruction images",
+     "subtitle": "",
+     "info": false,
+     "bullets": [
+      "Use `.png` files.",
+      "Drag them into `Assets -> Images and Videos`."
+     ],
+     "image": "img/p5_3.jpg",
+     "tip": "",
+     "warn": ""
+    },
+    {
+     "id": "sb539d2",
+     "type": "step",
+     "title": "Set the Texture Type",
+     "subtitle": "",
+     "info": false,
+     "bullets": [
+      "Select all the imported images.",
+      "In the Inspector set **Texture Type** to `Sprite (2D and UI)`.",
+      "Click **Apply** at the bottom of the Inspector."
+     ],
+     "image": "img/p5_4.jpg",
+     "tip": "Without Apply the change is not saved and the images may not be usable as a Source Image later.",
+     "warn": ""
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "title": "CAD model",
+   "subtitle": "Import and align the machine",
+   "steps": [
+    {
+     "id": "sba2f78",
+     "type": "step",
+     "title": "Import the CAD model",
+     "subtitle": "",
+     "info": false,
+     "bullets": [
+      "Use an `.fbx` file.",
+      "Drag it into `Assets -> CAD`."
+     ],
+     "image": "img/p6_1.jpg",
+     "tip": "",
+     "warn": ""
+    },
+    {
+     "id": "sc2fa87",
+     "type": "step",
+     "title": "Place it under MachineRoot",
+     "subtitle": "",
+     "info": false,
+     "bullets": [
+      "Drag the model from the Project window into `MachineRoot` in the Hierarchy.",
+      "Check it is a **child** of `MachineRoot`."
+     ],
+     "image": "img/p6_3.jpg",
+     "tip": "",
+     "warn": ""
+    },
+    {
+     "id": "s810cef",
+     "type": "step",
+     "title": "Apply the alignment material",
+     "subtitle": "",
+     "info": false,
+     "bullets": [
+      "Select the CAD model in the Hierarchy.",
+      "Inspector -> `Add Component` -> `Apply Material To All`.",
+      "In **Target Material** drop `AlignmentMat` (find it in the folder `Materials`)."
+     ],
+     "image": "img/p7_1.jpg",
+     "tip": "",
+     "warn": ""
+    },
+    {
+     "id": "sb3613d",
+     "type": "step",
+     "title": "Link the model to AppManager",
+     "subtitle": "",
+     "info": false,
+     "bullets": [
+      "Select `AppManager` in the Hierarchy.",
+      "In **Procedure Flow Controller**, drag the CAD model from the Hierarchy into its field."
+     ],
+     "image": "img/p7_2.jpg",
+     "tip": "",
+     "warn": ""
+    },
+    {
+     "id": "c6e0122",
+     "type": "choice",
+     "title": "Model pivot",
+     "question": "Is the pivot of the model centered?",
+     "options": [
+      {
+       "id": "o367812",
+       "label": "Pivot is off-center",
+       "desc": "Center it, then reset the transform.",
+       "steps": [
+        {
+         "id": "sf58f1f",
+         "type": "step",
+         "title": "Center the pivot",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Select the CAD model in the Hierarchy.",
+          "Menu `Tools -> Align -> Center Pivot to Children Bounds`."
+         ],
+         "image": "img/p7_3.jpg",
+         "tip": "",
+         "warn": ""
+        },
+        {
+         "id": "s6f0a1c",
+         "type": "step",
+         "title": "Reset the transform",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Select the CAD model.",
+          "In **Transform** set all position coordinates to `0`.",
+          "Adjust the Rotation values to correctly position the model.",
+          "This aligns the model with its parent `MachineRoot`."
+         ],
+         "image": "img/p8_1.jpg",
+         "tip": "Leave Scale at 1 unless the model really needs resizing.",
+         "warn": ""
+        }
+       ],
+       "image": "img/p18_1.jpg"
+      },
+      {
+       "id": "o70be80",
+       "label": "Pivot is fine",
+       "desc": "Nothing to correct.",
+       "steps": [
+        {
+         "id": "s380b37",
+         "type": "step",
+         "title": "Align CAD with MachineRoot",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Select the CAD model.",
+          "In **Transform** set all position coordinates to `0`.",
+          "Adjust the Rotation values to correctly position the model.",
+          "This aligns the model with its parent `MachineRoot`."
+         ],
+         "image": "img/p8_1.jpg",
+         "tip": "Leave Scale at 1 unless the model really needs resizing.",
+         "warn": ""
+        }
+       ],
+       "image": "img/p18_2.jpg"
+      }
+     ],
+     "image": ""
+    },
+    {
+     "id": "c05d156",
+     "type": "choice",
+     "title": "Visible parts",
+     "question": "Should the whole model be visible at runtime?",
+     "options": [
+      {
+       "id": "o1fa722",
+       "label": "Show the whole model",
+       "desc": "No change.",
+       "steps": []
+      },
+      {
+       "id": "oba6d54",
+       "label": "Hide some parts",
+       "desc": "Useful to make the alignment easier.",
+       "steps": [
+        {
+         "id": "s424fc9",
+         "type": "step",
+         "title": "Hide the part",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Expand the CAD object in the Hierarchy.",
+          "Its parts are children: select the one to hide.",
+          "In the Inspector uncheck the **active** checkbox."
+         ],
+         "image": "uploads/mw1yjgi6_Immagine_2026-11-04_111139.jpg",
+         "tip": "Repeat for each part to hide.",
+         "warn": ""
+        }
+       ],
+       "image": "uploads/mw1yebfb_Immagine_2026-11-04_110750.jpg"
+      }
+     ],
+     "image": ""
+    }
+   ]
+  },
+  {
+   "id": "p4",
+   "title": "Pop-ups",
+   "subtitle": "Build the instruction sequences",
+   "steps": [
+    {
+     "id": "c6316d5",
+     "type": "choice",
+     "title": "Creation method",
+     "question": "How do you want to create the pop-up sequences?",
+     "options": [
+      {
+       "id": "o3bc0f6",
+       "label": "Manual",
+       "desc": "Build each pop-up yourself. Best with no instruction document, or to customize.",
+       "steps": [
+        {
+         "id": "shn7i0o",
+         "type": "step",
+         "title": "Create the Procedure Roots",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Right-click on `MachineRoot` -> `Create Empty` (as child).",
+          "Rename it after the root to be created, e.g. `ProcedureRoot_EN`.",
+          "Select it to open its inspector -> `Add Component` -> `Popup Sequence Controller`."
+         ],
+         "image": "",
+         "tip": "Repeat this procedure two times (EN and SV)",
+         "warn": ""
+        },
+        {
+         "id": "s7u03zk",
+         "type": "step",
+         "title": "Assign it to AppManager",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Select `AppManager`.",
+          "Drag `ProcedureRoot` from the hierarchy into the designated field of **Procedure Flow Controller**"
+         ],
+         "image": "img/p12_2.jpg",
+         "tip": "",
+         "warn": ""
+        },
+        {
+         "id": "sdd87db",
+         "type": "step",
+         "title": "Create the operations",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Under `MachineRoot` right-click on `ProcedureRoot_EN` -> `Create Empty` (as child).",
+          "Rename it after the operation, e.g. `ReplacingBeltTopGrinder`.",
+          "Repeat for each operation of the machine."
+         ],
+         "image": "img/p13_1.jpg",
+         "tip": "",
+         "warn": "Note: the name written here will also be the one displayed on the **OperationSelection** Popup"
+        },
+        {
+         "id": "sfb7819",
+         "type": "step",
+         "title": "Repeat for Swedish",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Do the same under `ProcedureRoot_SV`.",
+          "Operation names can match the English ones or differ."
+         ],
+         "image": "",
+         "tip": "Language selection (EN/SV) is already configured: you only create the sequences.",
+         "warn": ""
+        },
+        {
+         "id": "sr4stxf",
+         "type": "step",
+         "title": "Create OperationSelection panel ",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Go on `Tools` -> `Create Operation Selection Panels`"
+         ],
+         "image": "",
+         "tip": "",
+         "warn": "Note: if one specific **ProcedureRoot** is selected, the **OperationSelection** popup will be created only for that root, otherwise a popup will be assigned to each **ProcedureRoot** present in the scene"
+        },
+        {
+         "id": "s8e8ee8",
+         "type": "step",
+         "title": "Set up Popup Sequence Controller",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Select each `ProcedureRoot` and, in the Inspector, open **Popup Sequence Controller**.",
+          "Set **Operations** = number of operations created.",
+          "Per operation fill: **Operation Name**, **Selection Button** (drag the `OperationSelection` buttons from the Hierarchy), **Operation Root** (the empty object named as the Operation), **Steps** (number of pop-ups that should be present in this sequence), **Enable After Last Popup** (the \"OperationSelection\" Canvas just created)."
+         ],
+         "image": "img/p13_2.jpg",
+         "tip": "The tool `Create Operation Selection Panels` should have automatically configured some of the fields. Check if everything is filled correclty following the steps above",
+         "warn": ""
+        },
+        {
+         "id": "cfc7df5",
+         "type": "choice",
+         "title": "Pop-up type",
+         "question": "Which pop-up template do you need?",
+         "options": [
+          {
+           "id": "oc0d343",
+           "label": "Image pop-up",
+           "desc": "Text plus a reference image.",
+           "steps": [
+            {
+             "id": "s473630",
+             "type": "step",
+             "title": "Create an image pop-up",
+             "subtitle": "",
+             "info": false,
+             "bullets": [
+              "Menu `Tools -> Create Image Popup Template`."
+             ],
+             "image": "img/p9_1.jpg",
+             "tip": "It appears in the Hierarchy as an empty template.",
+             "warn": ""
+            }
+           ]
+          },
+          {
+           "id": "o2b4414",
+           "label": "Video pop-up",
+           "desc": "Text plus a video.",
+           "steps": [
+            {
+             "id": "s23066b",
+             "type": "step",
+             "title": "Create a video pop-up",
+             "subtitle": "",
+             "info": false,
+             "bullets": [
+              "Menu `Tools -> Create Video Popup Template`."
+             ],
+             "image": "img/p9_1.jpg",
+             "tip": "It appears in the Hierarchy as an empty template.",
+             "warn": ""
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "id": "s37e56e",
+         "type": "step",
+         "title": "Rename the pop-up",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Rename the new Canvas after the step it shows, e.g. `Step1.1`."
+         ],
+         "image": "img/p9_2.jpg",
+         "tip": "The template starts empty.",
+         "warn": ""
+        },
+        {
+         "id": "s4f6429",
+         "type": "step",
+         "title": "Edit title and text",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Expand the Canvas in the Hierarchy.",
+          "Select the title and text elements.",
+          "Type your text in their Inspector in the `TextMeshPro - Text (UI)` component."
+         ],
+         "image": "img/p10_1.jpg",
+         "tip": "Keep one short action per pop-up.",
+         "warn": ""
+        },
+        {
+         "id": "s728c23",
+         "type": "step",
+         "title": "Add the image (Image pop-ups)",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Make sure the image is a Sprite (previously applied).",
+          "Select **Image Display** in the **Hierarchy** under the Canvas.",
+          "Drag the image into **Source Image**."
+         ],
+         "image": "img/p10_3.jpg",
+         "tip": "",
+         "warn": ""
+        },
+        {
+         "id": "se9d418",
+         "type": "step",
+         "title": "Move the pop-up under its operation",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Drag the pop-up Canvas onto the matching `OperationRoot` in the **Hierarchy**.",
+          "It becomes a child of that operation."
+         ],
+         "image": "img/p14_1.jpg",
+         "tip": "",
+         "warn": ""
+        },
+        {
+         "id": "s873220",
+         "type": "step",
+         "title": "Link pop-ups to the sequence",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Open **Popup Sequence Controller** again (from `ProcedureRoot`'s inspectors).",
+          "Set the number of pop-ups for each operation.",
+          "Drag each pop-up **Canvas** into **Popup** field.",
+          "Drag each **Close Button** into **Close Button** field."
+         ],
+         "image": "img/p14_2.jpg",
+         "tip": "Repeat for every pop-up of every operation, in both languages.",
+         "warn": "Note: the order of the popups added to this **component** will be the order these popups will be displayed"
+        }
+       ]
+      },
+      {
+       "id": "o787c4d",
+       "label": "Structured document",
+       "desc": "Generate from a document in the required template. No manual pop-ups.",
+       "steps": [
+        {
+         "id": "s1807e4",
+         "type": "step",
+         "title": "Write the instruction document",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Follow the format in `Assets -> Instructions -> InstructionsTemplate` to write the structured instruction manual."
+         ],
+         "image": "",
+         "tip": "",
+         "warn": "The file must match it, or Unity cannot read it."
+        },
+        {
+         "id": "s087eba",
+         "type": "step",
+         "title": "Generate the pop-ups",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Menu `Tools -> Popups -> Generate Popups From Instructions File`.",
+          "Select your document.",
+          "A `ProcedureRoot` is created."
+         ],
+         "image": "",
+         "tip": "",
+         "warn": ""
+        },
+        {
+         "id": "s226c54",
+         "type": "step",
+         "title": "Parent the ProcedureRoot",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Drag `ProcedureRoot` onto `MachineRoot` in the Hierarchy."
+         ],
+         "image": "img/p11_1.jpg",
+         "tip": "The ProcedureRoot is generated in the language of the chosen manual. One document per language gives one ProcedureRoot each (e.g. EN and SV)",
+         "warn": "Note: The image shows two ProcedureRoot objects, each created for a different instruction manual (English and Swedish). Your specific setup may differ"
+        },
+        {
+         "id": "s382e01",
+         "type": "step",
+         "title": "Assign it to AppManager",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Select `AppManager`.",
+          "Drag `ProcedureRoot` into the designated field of **Procedure Flow Controller**."
+         ],
+         "image": "img/p11_2.jpg",
+         "tip": "",
+         "warn": ""
+        }
+       ]
+      },
+      {
+       "id": "o138431",
+       "label": "AI conversion",
+       "desc": "Generate from any document. Fastest, if AI is allowed.",
+       "steps": [
+        {
+         "id": "s53cb1f",
+         "type": "step",
+         "title": "Check requirements",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Your company must allow the use of AI.",
+          "Have an API key ready."
+         ],
+         "image": "",
+         "tip": "",
+         "warn": "Without company permission, use the **structured document** method."
+        },
+        {
+         "id": "s411e63",
+         "type": "step",
+         "title": "Open the AI generator",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Menu on top of the screen `Tools -> Popups -> AI Document Converter Popup Generator`.",
+          "Select your instruction document (any format) from `Source Document -> Browse`."
+         ],
+         "image": "",
+         "tip": "",
+         "warn": ""
+        },
+        {
+         "id": "s7a032d",
+         "type": "step",
+         "title": "Check the configuration",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Enter the **API key** in its field.",
+          "Fill the **Advanced Options** if needed."
+         ],
+         "image": "",
+         "tip": "",
+         "warn": ""
+        },
+        {
+         "id": "s549b9b",
+         "type": "step",
+         "title": "Generate",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Press **Convert & Generate PopUps in the Scene**.",
+          "A `ProcedureRoot` is created."
+         ],
+         "image": "",
+         "tip": "The ProcedureRoot is generated in the language of the chosen manual. One document per language gives one ProcedureRoot each (e.g. EN and SV)",
+         "warn": ""
+        },
+        {
+         "id": "s7fea99",
+         "type": "step",
+         "title": "Parent the ProcedureRoot",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Drag `ProcedureRoot` onto `MachineRoot` in the Hierarchy"
+         ],
+         "image": "img/p12_1.jpg",
+         "tip": "The ProcedureRoot is generated in the language of the chosen manual. One document per language gives one ProcedureRoot each (e.g. EN and SV)",
+         "warn": "Note: The image shows two ProcedureRoot objects, each created for a different instruction manual (English and Swedish). Your specific setup may differ"
+        },
+        {
+         "id": "sc0c3c8",
+         "type": "step",
+         "title": "Assign it to AppManager",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Select `AppManager`.",
+          "Drag `ProcedureRoot` into the designated field of **Procedure Flow Controller**."
+         ],
+         "image": "img/p12_2.jpg",
+         "tip": "",
+         "warn": "Note: The image shows two ProcedureRoot objects, each created for a different instruction manual (English and Swedish). Your specific setup may differ"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p5",
+   "title": "Positioning",
+   "subtitle": "Place pop-ups around the machine",
+   "steps": [
+    {
+     "id": "cb042e4",
+     "type": "choice",
+     "title": "Move the pop-ups",
+     "question": "How do you want to place each pop-up?",
+     "options": [
+      {
+       "id": "o7fef1b",
+       "label": "Numeric values",
+       "desc": "Precise: edit the Rect Transform.",
+       "steps": [
+        {
+         "id": "s20xjdm",
+         "type": "step",
+         "title": "Visualize Popups",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "From the **Hierarchy** select all the popups to be visualized and their parent (name of the operation) under ` ProcedureRoot`",
+          "Show the popups in the scene by flagging the ` Active box`  in the **Inspector** of the selected items"
+         ],
+         "image": "uploads/mw4suepc_visualizePopups.jpg",
+         "tip": "The same positioning procedure is valid also for the **OperationSelection** popups. They should be positioned in front of the machine",
+         "warn": "This should be done only if the **Popups** are NOT already visible in the scene"
+        },
+        {
+         "id": "s092889",
+         "type": "step",
+         "title": "Edit Rect Transform",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Select the pop-up Canvas.",
+          "In **Rect Transform** change position, rotation and scale."
+         ],
+         "image": "img/p15_1.jpg",
+         "tip": "",
+         "warn": "Make sure to change the **Canvas** position/rotation and NOT the **Panel** one"
+        }
+       ]
+      },
+      {
+       "id": "od8412b",
+       "label": "Directly in the scene",
+       "desc": "Visual: drag the gizmos.",
+       "steps": [
+        {
+         "id": "se5rtey",
+         "type": "step",
+         "title": "Visualize Popups",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "From the **Hierarchy** select all the popups to be visualized and their parent (name of the operation) under ` ProcedureRoot`",
+          "Show the popups in the scene by flagging the ` Active box`  in the **Inspector** (next to their name) of the selected items"
+         ],
+         "image": "uploads/mw4suepc_visualizePopups.jpg",
+         "tip": "The same procedure is valid also for the **OperationSelection** popups. They should be positioned in front of the machine",
+         "warn": "This should be done only if the **Popups** are NOT already visible in the scene."
+        },
+        {
+         "id": "sfaab65",
+         "type": "step",
+         "title": "Move",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Select the Canvas.",
+          "Drag the axes in the Scene view."
+         ],
+         "image": "img/p15_2.jpg",
+         "tip": "Proceed to the next step to learn how to rotate the popup.",
+         "warn": "Make sure to change the **Canvas** position and NOT the **Panel** one"
+        },
+        {
+         "id": "s87e8da",
+         "type": "step",
+         "title": "Rotate",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Press `E`.",
+          "Drag the lines of the rotation sphere.",
+          "Press `W` to return to the move axes."
+         ],
+         "image": "img/p15_3.jpg",
+         "tip": "",
+         "warn": "Make sure to change the **Canvas** rotation and NOT the **Panel** one"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "c140589",
+     "type": "choice",
+     "title": "Leader ray",
+     "question": "Connect pop-ups to machine components with a ray? (recommended)",
+     "options": [
+      {
+       "id": "od684d5",
+       "label": "Yes, use the ray",
+       "desc": "Links each instruction to its component.",
+       "steps": [
+        {
+         "id": "sd3f1c6",
+         "type": "step",
+         "title": "Activate the ray",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Select the pop-up **panel**.",
+          "In **Popup Leader Ray** component enable `Show Ray`."
+         ],
+         "image": "img/p16_1.jpg",
+         "tip": "",
+         "warn": ""
+        },
+        {
+         "id": "sd00373",
+         "type": "step",
+         "title": "Show it in the scene",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Activate the visibility toggle in the Scene view.",
+          "The ray appears and can be moved."
+         ],
+         "image": "img/p16_2.jpg",
+         "tip": "",
+         "warn": ""
+        },
+        {
+         "id": "s365ed0",
+         "type": "step",
+         "title": "Aim the ray",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Drag the colored axes at the ray end onto the component."
+         ],
+         "image": "img/p17_1.jpg",
+         "tip": "The end linked to the pop-up follows the panel.",
+         "warn": ""
+        }
+       ],
+       "image": "img/p17_1.jpg"
+      },
+      {
+       "id": "o41a94d",
+       "label": "No ray",
+       "desc": "Pop-ups only.",
+       "steps": [
+        {
+         "id": "swvsumm",
+         "type": "step",
+         "title": "Check ray option",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Select the pop-up panel",
+          "In **Popup Leader Ray** component disable `Show Ray if it is enabled"
+         ],
+         "image": "uploads/mw1z0zg2_Immagine_2026-11-04_112457.jpg",
+         "tip": "Repeat this procedure for all Popup Panels for which the ray needs to be disabled",
+         "warn": ""
+        }
+       ],
+       "image": "img/p15_1.jpg"
+      }
+     ],
+     "image": ""
+    },
+    {
+     "id": "ced2b04",
+     "type": "choice",
+     "title": "Common placement",
+     "question": "Should all pop-ups share the same position?",
+     "options": [
+      {
+       "id": "ob7acd0",
+       "label": "Yes, copy one position",
+       "desc": "Recommended for readability.",
+       "steps": [
+        {
+         "id": "s1e51c5",
+         "type": "step",
+         "title": "Copy the Rect Transform",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Place one pop-up (position, rotation, scale).",
+          "Copy its **Rect Transform** values."
+         ],
+         "image": "img/p17_2.jpg",
+         "tip": "Right-click the component header -> `Copy -> Component`.",
+         "warn": ""
+        },
+        {
+         "id": "s4d3fa8",
+         "type": "step",
+         "title": "Paste on all pop-ups",
+         "subtitle": "",
+         "info": false,
+         "bullets": [
+          "Select all instruction pop-ups in the Hierarchy.",
+          "Paste the values into **Rect Transform**."
+         ],
+         "image": "img/p17_3.jpg",
+         "tip": "Use `Paste -> Component Values`.",
+         "warn": ""
+        }
+       ]
+      },
+      {
+       "id": "oab2259",
+       "label": "No, place each one",
+       "desc": "Manual placement.",
+       "steps": []
+      }
+     ]
+    },
+    {
+     "id": "sb85d1c",
+     "type": "step",
+     "title": "Final check",
+     "subtitle": "",
+     "info": false,
+     "bullets": [
+      "Popups visualization should be deactivated (In their **Inspector** unflag the active checkbox next to their name ).",
+      "Render Mode is `Multi-Pass` (Windows and Android).",
+      "CAD model is assigned in AppManager.",
+      "`ProcedureRoot` is assigned in AppManager.",
+      "Every operation has the right number of Steps.",
+      "Press Play and test each operation."
+     ],
+     "image": "",
+     "tip": "Run through every path once before sharing the scene.",
+     "warn": ""
+    }
+   ]
+  }
+ ]
+}
