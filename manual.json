@@ -568,7 +568,7 @@
           "Follow the format in `Assets -> Instructions -> InstructionsTemplate` to write the structured instruction manual."
          ],
          "image": "",
-         "tip": "Duplicate the document and use it to start writing your Manual. Copy and modify the **examples** in the template to be faster ",
+         "tip": "Duplicate the document and use it to start writing your Manual. Copy and modify the **examples** in the template to be faster. **GrindingMachineInstructions_EN** is an example document that can be used as reference.",
          "warn": "The file must match it, or Unity cannot read it."
         },
         {
