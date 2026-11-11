@@ -568,7 +568,7 @@
           "Follow the format in `Assets -> Instructions -> InstructionsTemplate` to write the structured instruction manual."
          ],
          "image": "",
-         "tip": "",
+         "tip": "Duplicate the document and use it to start writing your Manual. Copy and modify the **examples** in the template to be faster ",
          "warn": "The file must match it, or Unity cannot read it."
         },
         {
