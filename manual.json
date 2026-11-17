@@ -80,7 +80,7 @@
           "Panels are children of the Canvas."
          ],
          "image": "img/p4_2.jpg",
-         "tip": "",
+         "tip": "Distinguishing between canvases and panels can be confusing. Refer back to this page whenever you need to work with these elements to ensure you’re doing everything correctly.",
          "warn": "Note: The image shown is for illustrative purposes only. Each Canvas and Panel in the scene will have its own unique name. Therefore, not all Canvases will be named \"OperationSelectionSV\", nor will all Panels be named \"Panel\"."
         }
        ]
@@ -498,8 +498,8 @@
          "subtitle": "",
          "info": false,
          "bullets": [
-          "Expand the Canvas in the Hierarchy.",
-          "Select the title and text elements.",
+          "Expand the Canvas and its child components in the Hierarchy.",
+          "Select the title and text elements to personalize.",
           "Type your text in their Inspector in the `TextMeshPro - Text (UI)` component."
          ],
          "image": "img/p10_1.jpg",
@@ -513,6 +513,7 @@
          "subtitle": "",
          "info": false,
          "bullets": [
+          "Choose the correct image from **Images and Videos** folder",
           "Make sure the image is a Sprite (previously applied).",
           "Select **Image Display** in the **Hierarchy** under the Canvas.",
           "Drag the image into **Source Image**."
@@ -528,7 +529,7 @@
          "subtitle": "",
          "info": false,
          "bullets": [
-          "Drag the pop-up Canvas onto the matching `OperationRoot` in the **Hierarchy**.",
+          "Drag the pop-up **Canvas** onto the matching `OperationRoot` in the **Hierarchy**.",
           "It becomes a child of that operation."
          ],
          "image": "img/p14_1.jpg",
@@ -545,7 +546,7 @@
           "Open **Popup Sequence Controller** again (from `ProcedureRoot`'s inspectors).",
           "Set the number of pop-ups for each operation.",
           "Drag each pop-up **Canvas** into **Popup** field.",
-          "Drag each **Close Button** into **Close Button** field."
+          "Drag each **Close Button** into **Close Button** field. (Find it as a child of the **Panel**)"
          ],
          "image": "img/p14_2.jpg",
          "tip": "Repeat for every pop-up of every operation, in both languages.",
@@ -750,7 +751,7 @@
           "In **Rect Transform** change position, rotation and scale."
          ],
          "image": "img/p15_1.jpg",
-         "tip": "",
+         "tip": "If all **Popups** need to have the same position in space, follow the next steps to learn how to quickly change the position of all popups in th escene.",
          "warn": "Make sure to change the **Canvas** position/rotation and NOT the **Panel** one"
         }
        ]
@@ -800,7 +801,7 @@
           "Press `W` to return to the move axes."
          ],
          "image": "img/p15_3.jpg",
-         "tip": "",
+         "tip": "If all **Popups** need to have the same position in space, follow the next steps to learn how to quickly change the position of all popups in th escene.",
          "warn": "Make sure to change the **Canvas** rotation and NOT the **Panel** one"
         }
        ]
@@ -908,8 +909,8 @@
           "Place one pop-up (position, rotation, scale).",
           "Copy its **Rect Transform** values."
          ],
-         "image": "img/p17_2.jpg",
-         "tip": "Right-click the component header -> `Copy -> Component`.",
+         "image": "img/p17_3.jpg",
+         "tip": "Click on the three dots next to the component header -> `Copy -> Component`.",
          "warn": ""
         },
         {
@@ -919,10 +920,10 @@
          "subtitle": "",
          "info": false,
          "bullets": [
-          "Select all instruction pop-ups in the Hierarchy.",
+          "In the Hierarchy select all instruction pop-ups to be moved.",
           "Paste the values into **Rect Transform**."
          ],
-         "image": "img/p17_3.jpg",
+         "image": "img/p17_2.jpg",
          "tip": "Use `Paste -> Component Values`.",
          "warn": ""
         }
