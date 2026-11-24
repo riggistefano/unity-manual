@@ -16,13 +16,13 @@
      "options": [
       {
        "id": "o49f7e3",
-       "label": "No, skip it",
+       "label": "Skip it",
        "desc": "I already know Unity. Go straight to the setup.",
        "steps": []
       },
       {
        "id": "o4a7dac",
-       "label": "Yes, show me",
+       "label": "Show me",
        "desc": "4 short read-only cards. No actions required.",
        "steps": [
         {
@@ -80,12 +80,13 @@
           "Panels are children of the Canvas."
          ],
          "image": "img/p4_2.jpg",
-         "tip": "Distinguishing between canvases and panels can be confusing. Refer back to this page whenever you need to work with these elements to ensure you’re doing everything correctly.",
+         "tip": "Suggestion: look at the symbols next to the object's name in the hierarchy. Distinguishing between canvases and panels can be confusing. Refer back to this page whenever you need to work with these elements to ensure you’re doing everything correctly.",
          "warn": "Note: The image shown is for illustrative purposes only. Each Canvas and Panel in the scene will have its own unique name. Therefore, not all Canvases will be named \"OperationSelectionSV\", nor will all Panels be named \"Panel\"."
         }
        ]
       }
-     ]
+     ],
+     "image": ""
     }
    ]
   },
@@ -580,7 +581,7 @@
          "info": false,
          "bullets": [
           "Menu `Tools -> Popups -> Generate Popups From Instructions File`.",
-          "Select your document.",
+          "Select the document you wrote.",
           "A `ProcedureRoot` is created."
          ],
          "image": "",
@@ -747,7 +748,7 @@
          "subtitle": "",
          "info": false,
          "bullets": [
-          "Select the pop-up Canvas.",
+          "Select the pop-up **Canvas**.",
           "In **Rect Transform** change position, rotation and scale."
          ],
          "image": "img/p15_1.jpg",
@@ -782,8 +783,8 @@
          "subtitle": "",
          "info": false,
          "bullets": [
-          "Select the Canvas.",
-          "Drag the axes in the Scene view."
+          "Select the **CANVAS**.",
+          "Drag its axes in the Scene view."
          ],
          "image": "img/p15_2.jpg",
          "tip": "Proceed to the next step to learn how to rotate the popup.",
@@ -826,8 +827,8 @@
          "subtitle": "",
          "info": false,
          "bullets": [
-          "Select the pop-up **panel**.",
-          "In **Popup Leader Ray** component enable `Show Ray`."
+          "Select the pop-up **PANEL**.",
+          "In its inspector, **Popup Leader Ray** component, enable `Show Ray`."
          ],
          "image": "img/p16_1.jpg",
          "tip": "",
@@ -906,10 +907,10 @@
          "subtitle": "",
          "info": false,
          "bullets": [
-          "Place one pop-up (position, rotation, scale).",
+          "Place one pop-up (**Canvas** position, rotation and scale).",
           "Copy its **Rect Transform** values."
          ],
-         "image": "img/p17_3.jpg",
+         "image": "uploads/mwupaig5_rectTransform.jpg",
          "tip": "Click on the three dots next to the component header -> `Copy -> Component`.",
          "warn": ""
         },
