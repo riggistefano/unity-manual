@@ -122,7 +122,7 @@
       "Rename the copy and double-click to open it."
      ],
      "image": "img/p4_3.jpg",
-     "tip": "The scene already contains the required settings and some basic pop-ups. You only add the CAD model and the instructions.",
+     "tip": "`Assets` in the Project window is the one that can be found at the bottom part of the screen as showed in the  `Project folders` paragraph of this instruction manual",
      "warn": "The scene is configured for a Meta headset."
     },
     {
@@ -197,8 +197,8 @@
      "info": false,
      "bullets": [
       "Select the CAD model in the Hierarchy.",
-      "Inspector -> `Add Component` -> `Apply Material To All`.",
-      "In **Target Material** drop `AlignmentMat` (find it in the folder `Materials`)."
+      "Inspector -> `Add Component` -> `Apply Material To All` (Type the name to find it).",
+      "In **Target Material** drop `AlignmentMat` that you can find in the folder `Materials`."
      ],
      "image": "img/p7_1.jpg",
      "tip": "",
@@ -367,7 +367,7 @@
          "subtitle": "",
          "info": false,
          "bullets": [
-          "Select `AppManager`.",
+          "Select `AppManager` in the **Hierarchy**.",
           "Drag `ProcedureRoot` from the hierarchy into the designated field of **Procedure Flow Controller**"
          ],
          "image": "img/p12_2.jpg",
@@ -784,7 +784,7 @@
          "info": false,
          "bullets": [
           "Select the **CANVAS**.",
-          "Drag its axes in the Scene view."
+          "Drag its **axes** in the Scene view (The colored axes you can also see in the image here)."
          ],
          "image": "img/p15_2.jpg",
          "tip": "Proceed to the next step to learn how to rotate the popup.",
